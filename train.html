@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Train Information</title>
+    <script src="train.js"></script>
+    <style>
+      .radio-container {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+        padding: 10px;
+        color: antiquewhite;
+      }
+
+      .radio-container input[type="radio"] {
+        width: 20px;
+        height: 20px;
+        margin-left: 20px;
+      }
+
+      .radio-container label {
+        margin-left: 5px;
+      }
+
+      .content {
+        background-color: orange;
+        background-image: url('./take-a-ride-in-the-toy-train-1653978188_8ac904b5bdb228abad78.webp');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      body {
+        text-align: center;
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .container {
+        max-width: 600px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 20px;
+      }
+
+      form {
+        margin-bottom: 20px;
+      }
+
+      input {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 20px;
+        border: 1px solid #ccc;
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: orange;
+        color: black;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+
+      #trainInfo {
+        margin-bottom: 20px;
+        color: blue;
+      }
+
+      #error {
+        color: red;
+      }
+
+      .link a {
+        text-decoration: none;
+        color: aqua;
+        display: block;
+        margin: 5px 0;
+      }
+
+      @media (min-width: 600px) {
+        .link {
+          display: inline-block;
+          margin: 0 10px;
+        }
+
+        .link a {
+          display: inline;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .radio-container {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .radio-container button {
+          margin-top: 10px;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-***" crossorigin="anonymous" />
+  </head>
+  <body>
+    <div class="radio-container">
+      <div class="link">
+        <a href="./traintickets.html">Book train tickets</a>
+      </div>
+      <div class="link">
+        <a href="./PNR.html">Check PNR status</a>
+      </div>
+      <div class="link">
+        <a href="https://www.google.com/maps/@17.4809535,78.3955875,15z?entry=ttu" target="_self">Live train status</a>
+      </div>
+      <a href="SIGNIN.html">
+        <button>Login <i class="fa fa-sign-in-alt"></i></button>
+      </a>
+      <a href="formvalidation.html">
+        <button type="submit">Signup <i class="fa fa-user-plus"></i></button>
+      </a>
+    </div>
+
+    <div class="content">
+      <div class="container">
+        <h1>Live trains status</h1>
+        <form id="trainForm">
+          <label for="trainName">Train Information</label>
+          <input type="text" id="trainName" name="trainName" required placeholder="Enter train name" />
+          <button type="submit">Get Info</button>
+        </form>
+        <div id="trainInfo"></div>
+        <div id="error"></div>
+      </div>
+    </div>
+  </body>
+</html>
+
+

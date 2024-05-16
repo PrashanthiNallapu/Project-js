@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            text-align: center;
+            background-color: bisque;
+            margin-top: 20px;
+            padding: 20px;
+           
+
+        }
+       
+        .a5{
+            margin-top: 20px;
+            margin-bottom: 20px;
+            /* background-color: aqua; */
+            padding: 5px;
+            width: 200px;
+            border-radius: 20px;
+            margin-left: 20px;
+        }
+        .a4{
+            /* background-color: aqua; */
+            margin-top: 50px;
+            padding: 5px;
+            width: 200px;
+            border-radius: 20px;
+            margin-left: 20px;
+        }
+        .a6{
+            /* background-color: aqua; */
+            margin-bottom: 20px;
+            padding: 5px;
+            width: 200px;
+            border-radius: 20px;
+            margin-left: 20px;
+        }
+       
+        .a12{
+            /* background-color: aqua; */
+            margin-bottom: 20px;
+            padding: 5px;
+            width: 200px;
+            border-radius: 20px;
+
+        }
+        .a14{
+            /* background-color: aqua; */
+            margin-bottom: 20px;
+            padding: 5px;
+            width: 200px;
+            border-radius: 20px;
+
+        }
+        .a8{
+            background-color: coral;
+            width: 100px;
+            border-radius: 20px;
+            margin-left: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: chocolate; text-align: center;">SIGNUP FORM</h1>
+    <form id="signupForm">
+        <label class="a1" for="name">User Name:</label>
+        <input class="a4" type="text" id="name" name="name" required><br>
+    
+        <label class="a2" for="email">Email:</label>
+        <input class="a5" type="email" id="email" name="email" required><br>
+    
+        <label class="a3" for="phone">Phone:</label>
+        <input class="a6" type="tel" id="phone" name="phone" pattern="[0-9]{10}" required><br>
+
+        <!-- <label class="a11" for="username">Username:</label>
+        <input class="a12" type="text" id="username" name="username" required><br> -->
+
+        <label class="a13" for="username">Password:</label>
+        <input class="a14" type="password" id="password" name="password" required><br>
+
+        <input class="a8" type="submit" value="signup"><br/>
+
+        <p class="form-group">By creating an account, you agree to our <a href="#">Terms of Use</a> and
+            our <a href="#">Privacy Policy</a>.</p>
+        <hr>
+        <p></p>Already have an account? <a href="./signin.html">Sign in</a></p>
+    </form>
+    
+    <div id="error"></div>
+    
+    <script>
+       document.addEventListener("DOMContentLoaded", function() {
+    const signupForm = document.getElementById("signupForm");
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    signupForm.addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(signupForm);
+        const username = formData.get("username");
+        const email = formData.get("email");
+        const password = formData.get("password");
+
+        const emailExists = users.some(user => user.email === email);
+
+        if (!emailExists) {
+            const newUser = { username, email, password };
+            users.push(newUser);
+            localStorage.setItem("users", JSON.stringify(users));
+            alert("Registration Successful");
+            signupForm.reset(); // Reset the form after successful registration
+            window.location.href = "./signin.html"; // Navigate to login page
+        } else {
+            alert("User already exists. Please go to Sign In.");
+        }
+    });
+});
+
+    </script>
+</body>
+</html>

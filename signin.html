@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         body{
+            text-align: center;
+            background-color: pink;
+            margin-top: 20px;
+            padding: 20px;
+        }
+        #email{
+            width: 250px;
+            border-radius: 20px;
+            /* background-color: palegoldenrod; */
+        }
+        #password{
+            width: 250px;
+            border-radius: 20px;
+            /* background-color: palegoldenrod; */
+        }
+        button{
+            width: 100px;
+            border-radius: 20px;
+            background-color: green;
+            margin-left: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: purple;">SIGNIN FORM</h1>
+    <form id="signinForm">
+        <label for="email">Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input type="email" id="email" name="email" required><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        <button type="submit">Sign In</button>
+    </form>
+  
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const signinForm = document.getElementById("signinForm");
+
+            signinForm.addEventListener("submit", function(e) {
+                e.preventDefault();
+
+                const formData = new FormData(signinForm);
+                const email = formData.get("email");
+                const password = formData.get("password");
+                
+                const users = JSON.parse(localStorage.getItem("users")) || [];
+                const user = users.find(user => user.email === email && user.password === password);
+
+                if (user) {
+                    alert("Login Successful");
+                    
+                } else {
+                    alert("Invalid email or password. Please try again.");
+                }
+
+                signinForm.reset();
+            });
+        });
+    </script>
+</body>
+</html>
+
+
